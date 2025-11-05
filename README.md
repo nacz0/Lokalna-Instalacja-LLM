@@ -16,3 +16,7 @@ Projekt na przedmiot Inżynieria Oprogramowania
 - **`/scripts`** - Skrypty instalacyjne i konfiguracyjne środowiska
 - **`/tests`** - Testy UI, API oraz testy integracyjne
 - **`/data`** - Dane treningowe i testowe dla modelu
+
+### Instrukcja uruchomienia
+docker-compose up -d
+docker exec -it ollama ollama pull llama3
