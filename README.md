@@ -20,3 +20,5 @@ Projekt na przedmiot Inżynieria Oprogramowania
 ### Instrukcja uruchomienia
 docker-compose up -d
 docker exec -it ollama ollama pull llama3
+
+Link do Open WebUI: http://localhost:3000
