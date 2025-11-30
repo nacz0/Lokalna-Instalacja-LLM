@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   ollama:
     image: ollama/ollama:latest
@@ -6,6 +8,30 @@ services:
       - "11434:11434"
     volumes:
       - ./ollama:/root/.ollama
+    # Jeśli masz kartę graficzną NVIDIA, odkomentuj sekcję deploy poniżej:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    restart: unless-stopped
+
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:main
+    container_name: pipelines
+    ports:
+      - "9099:9099"
+    volumes:
+      # Mapowanie Twojego folderu ze skryptami (wrapper, test_pipe itp.)
+      - ./pipelines:/app/pipelines
+    environment:
+      # --- KLUCZOWE USTAWIENIA DLA UNIKNIĘCIA BŁĘDU 401 ---
+      # To hasło zabezpiecza serwer Pipelines. Musi być takie samo jak w open-webui:
+      - PIPELINES_API_KEY=0p3n-w3bu1
+      # To pozwala skryptom wewnątrz pipelines korzystać z tego klucza:
+      - OPENAI_API_KEY=0p3n-w3bu1
     restart: unless-stopped
 
   open-webui:
@@ -14,7 +40,15 @@ services:
     ports:
       - "3000:8080"
     environment:
+      # Gdzie jest Ollama? (adres wewnętrzny Dockera):
       - OLLAMA_API_BASE=http://ollama:11434
+      # Gdzie są Pipelines? (adres wewnętrzny Dockera):
+      - OPENAI_API_BASE_URL=http://pipelines:9099
+      # Klucz, którym OpenWebUI przedstawia się w Pipelines (musi pasować do PIPELINES_API_KEY):
+      - OPENAI_API_KEY=0p3n-w3bu1
+    volumes:
+      - ./open-webui:/app/backend/data
     depends_on:
       - ollama
+      - pipelines
     restart: unless-stopped
