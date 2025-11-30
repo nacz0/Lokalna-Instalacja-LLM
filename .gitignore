@@ -1,0 +1,5 @@
+# Ignorowane pliki/katalogi zmienione przez program
+ollama/
+open-webui/
+pipelines/__pycache__/
+pipelines/smart_llama/
