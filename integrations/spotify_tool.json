@@ -1,0 +1,129 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Spotify Search Tool",
+    "description": "Narzędzie do wyszukiwania utworów w Spotify API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.spotify.com/v1"
+    }
+  ],
+  "paths": {
+    "/search": {
+      "get": {
+        "summary": "Wyszukaj utwory w Spotify",
+        "description": "Wyszukuje utwory muzyczne na podstawie zapytania tekstowego",
+        "operationId": "searchSpotifyTrack",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Zapytanie wyszukiwania (nazwa utworu, artysty, albumu)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Typ wyszukiwania",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "track",
+              "enum": ["track", "artist", "album"]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maksymalna liczba wyników",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 5,
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pomyślne wyszukiwanie - zwraca listę utworów z nazwą, wykonawcą, albumem i linkiem Spotify",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tracks": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "Nazwa utworu"
+                              },
+                              "artists": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "description": "Imię artysty"
+                                    }
+                                  }
+                                }
+                              },
+                              "album": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "description": "Nazwa albumu"
+                                  }
+                                }
+                              },
+                              "external_urls": {
+                                "type": "object",
+                                "properties": {
+                                  "spotify": {
+                                    "type": "string",
+                                    "description": "Link do utworu w Spotify"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Brak autoryzacji - wymagany token Spotify"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
