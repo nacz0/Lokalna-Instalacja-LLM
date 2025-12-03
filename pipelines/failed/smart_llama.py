@@ -43,7 +43,7 @@ class Pipeline:
         """Zwraca ustawienia dla danego trybu."""
         if mode == "light":
             return {
-                "model": "phi3:mini",
+                "model": "llama3:latest",
                 "max_tokens": 256,
                 "temperature": 0.3
             }
@@ -55,7 +55,7 @@ class Pipeline:
             }
         elif mode == "advanced":
             return {
-                "model": "llama3.1:latest",
+                "model": "llama3:latest",
                 "max_tokens": 1024,
                 "temperature": 0.7
             }
