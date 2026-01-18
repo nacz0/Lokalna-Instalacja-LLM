@@ -9,20 +9,26 @@
   --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --accent-color: #667eea;
   --accent-hover: #5a6fd6;
-  
+
   /* Tło - ciemny motyw */
   --bg-primary: #0f0f1a;
   --bg-secondary: #1a1a2e;
   --bg-tertiary: #16213e;
-  
+
   /* Tekst */
   --text-primary: #eaeaea;
   --text-secondary: #a0a0a0;
   --text-muted: #6b7280;
-  
+
   /* Obramowania i cienie */
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+
+  /* Safe Mode - Friendly Theme */
+  --safe-primary: #4caf50;
+  --safe-bg-light: #e8f5e9;
+  --safe-text: #2e7d32;
+  --safe-accent: #81c784;
 }
 
 /* === Globalne style === */
@@ -158,9 +164,12 @@ code {
 
 /* === Animacje ładowania === */
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba(102, 126, 234, 0.4);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
   }
@@ -214,10 +223,72 @@ svg {
   .sidebar {
     background: var(--bg-primary) !important;
   }
-  
+
   [class*="user-message"],
   [class*="assistant-message"] {
     border-radius: 12px !important;
     padding: 10px 14px !important;
   }
+}
+
+/* === Safe Mode (Friendly Tables) === */
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+  margin: 10px 0 !important;
+  border: 1px solid var(--safe-accent) !important;
+  border-left: 5px solid var(--safe-primary) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: rgba(76, 175, 80, 0.03) !important;
+}
+
+th {
+  background: var(--safe-bg-light) !important;
+  color: var(--safe-text) !important;
+  padding: 10px 15px !important;
+  border-bottom: 1px solid var(--safe-accent) !important;
+  text-align: left !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+td {
+  padding: 15px !important;
+  color: var(--text-primary) !important;
+  line-height: 1.6 !important;
+}
+
+/* === Safe Mode (Friendly Theme) === */
+.safe-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--safe-bg-light);
+  color: var(--safe-text);
+  border: 1px solid var(--safe-accent);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  gap: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.safe-mode-response {
+  border-left: 4px solid var(--safe-primary) !important;
+  background: rgba(232, 245, 233, 0.05) !important;
+  padding-left: 15px !important;
+  transition: all 0.3s ease;
+}
+
+/* Ukrywamy obramowanie blokady jeśli nie działa HTML */
+.safe-mode-block {
+  border-left: 5px solid #ff5252 !important;
+  background: rgba(255, 82, 82, 0.1) !important;
+  padding: 15px !important;
+  border-top-right-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
 }
