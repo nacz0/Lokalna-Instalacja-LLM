@@ -42,6 +42,7 @@ services:
     environment:
       - PIPELINES_API_KEY=0p3n-w3bu1
       - OPENAI_API_KEY=0p3n-w3bu1
+      - PIPELINES_REQUIREMENTS_PATH=/app/pipelines/requirements.txt
     restart: unless-stopped
 
   open-webui:

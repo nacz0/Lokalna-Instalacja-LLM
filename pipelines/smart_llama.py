@@ -1,7 +1,7 @@
 """
 title: Llama 3 + Smart Mode Selector
 author: Ty
-version: 2.0
+version: 2.1
 """
 
 import requests
@@ -87,26 +87,40 @@ class Pipeline:
             messages.insert(0, {"role": "system", "content": f"System Context: {system_context}"})
 
         # 4. Wysyłamy zapytanie do Ollama z ustawieniami z trybu
-        payload = {
-            "model": settings["model"],
-            "messages": messages,
-            "stream": False,
-            "options": {
-                "num_predict": settings["max_tokens"],
-                "temperature": settings["temperature"]
-            }
-        }
-
-        print(f"📤 Wysyłam zapytanie do Ollamy...")
+        # Próbujemy najpierw wybrany model
+        models_to_try = [settings["model"], "llama3:latest", "llama3", "phi3"]
         
-        try:
-            r = requests.post("http://ollama:11434/api/chat", json=payload)
-            r.raise_for_status()
-            response_json = r.json()
-            
-            # Wyciągamy odpowiedź
-            ai_response = response_json.get("message", {}).get("content", "")
-            return ai_response
+        last_error = ""
+        for model_name in models_to_try:
+            payload = {
+                "model": model_name,
+                "messages": messages,
+                "stream": False,
+                "options": {
+                    "num_predict": settings["max_tokens"],
+                    "temperature": settings["temperature"]
+                }
+            }
 
-        except Exception as e:
-            return f"Error connecting to Ollama: {e}"
+            print(f"📤 Wysyłam zapytanie do Ollamy (model: {model_name})...")
+            
+            try:
+                r = requests.post("http://ollama:11434/api/chat", json=payload, timeout=60)
+                if r.status_code == 404: # Model nie znaleziony
+                    print(f"⚠️ Model {model_name} nie znaleziony w Ollama. Próbuję kolejny...")
+                    last_error = f"Model {model_name} not found."
+                    continue
+                    
+                r.raise_for_status()
+                response_json = r.json()
+                
+                # Wyciągamy odpowiedź
+                ai_response = response_json.get("message", {}).get("content", "")
+                return ai_response
+
+            except Exception as e:
+                print(f"❌ Błąd dla modelu {model_name}: {e}")
+                last_error = str(e)
+                continue
+        
+        return f"Error connecting to Ollama after trying fallback models. Last error: {last_error}"
