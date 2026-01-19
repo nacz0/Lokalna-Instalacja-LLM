@@ -27,7 +27,7 @@ docker-compose up -d
 ### 2. Pobierz modele AI
 ```powershell
 # Modele dla automatycznego wyboru trybu (na podstawie RAM):
-docker exec ollama ollama pull phi3:mini        # Light mode (< 8 GB RAM) - 2.2 GB
+docker exec ollama ollama pull gemma2:2b        # Light mode (< 8 GB RAM) - 2.2 GB
 docker exec ollama ollama pull llama3:latest    # Balanced mode (8-16 GB RAM) - 4.7 GB
 docker exec ollama ollama pull llama3.1:latest  # Advanced mode (> 16 GB RAM) - 4.9 GB
 ```
@@ -41,11 +41,11 @@ docker exec ollama ollama pull llama3.1:latest  # Advanced mode (> 16 GB RAM) - 
 
 Projekt automatycznie dostosowuje model do ilości dostępnej pamięci RAM:
 
-| Tryb | RAM | Model | Rozmiar | Max Tokens | Temperature |
-|------|-----|-------|---------|------------|-------------|
-| **Light** | < 8 GB | `phi3:mini` | 2.2 GB | 256 | 0.3 |
-| **Balanced** | 8-16 GB | `llama3:latest` | 4.7 GB | 512 | 0.5 |
-| **Advanced** | > 16 GB | `llama3.1:latest` | 4.9 GB | 1024 | 0.7 |
+| Tryb | RAM | Model | Rozmiar | Max Tokens | Temperature | Top-P | Top-K |
+|------|-----|-------|---------|------------|-------------|-------|-------|
+| **Light** | < 8 GB | `gemma2:2b` | 1.6 GB | 512 | 0.4 | 0.9 | 40 |
+| **Balanced** | 8-16 GB | `llama3:latest` | 4.7 GB | 1024 | 0.5 | 0.9 | 40 |
+| **Advanced** | > 16 GB | `llama3.1:latest` | 4.9 GB | 2048 | 0.6 | 0.95 | 50 |
 
 ## Testowanie z terminala
 
