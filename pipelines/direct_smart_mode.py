@@ -115,6 +115,59 @@ class Pipeline:
     def __init__(self):
         self.name = "Smart Mode"
         self.valves = self.Valves()
+        self._use_generate_endpoint = False  # Fallback flag
+
+    def _call_ollama(self, model: str, messages: list, max_tokens: int, temperature: float) -> str:
+        """Call Ollama API with fallback to /api/generate if /api/chat returns 404."""
+        base_url = self.valves.ollama_url.rsplit('/api/', 1)[0]
+        
+        # Try /api/chat first (unless we already know it doesn't work)
+        if not self._use_generate_endpoint:
+            try:
+                chat_url = f"{base_url}/api/chat"
+                response = requests.post(chat_url, json={
+                    "model": model,
+                    "messages": messages,
+                    "stream": False,
+                    "options": {"num_predict": max_tokens, "temperature": temperature}
+                }, timeout=60)
+                
+                if response.status_code == 404:
+                    print(f"[{self.name}] /api/chat not available, falling back to /api/generate")
+                    self._use_generate_endpoint = True
+                else:
+                    response.raise_for_status()
+                    return response.json().get("message", {}).get("content", "")
+            except requests.exceptions.HTTPError as e:
+                if e.response is not None and e.response.status_code == 404:
+                    self._use_generate_endpoint = True
+                else:
+                    raise
+        
+        # Fallback to /api/generate
+        generate_url = f"{base_url}/api/generate"
+        # Convert messages to prompt format for /api/generate
+        prompt_parts = []
+        for msg in messages:
+            role = msg.get("role", "user")
+            content = msg.get("content", "")
+            if role == "system":
+                prompt_parts.append(f"System: {content}")
+            elif role == "user":
+                prompt_parts.append(f"User: {content}")
+            elif role == "assistant":
+                prompt_parts.append(f"Assistant: {content}")
+        prompt_parts.append("Assistant:")
+        prompt = "\n\n".join(prompt_parts)
+        
+        response = requests.post(generate_url, json={
+            "model": model,
+            "prompt": prompt,
+            "stream": False,
+            "options": {"num_predict": max_tokens, "temperature": temperature}
+        }, timeout=60)
+        response.raise_for_status()
+        return response.json().get("response", "")
 
     async def on_startup(self):
         print(f"on_startup: {self.name}")
@@ -137,14 +190,12 @@ class Pipeline:
             messages.insert(0, {"role": "system", "content": f"System Context: {system_context}"})
 
         try:
-            r = requests.post(self.valves.ollama_url, json={
-                "model": settings["model"],
-                "messages": messages,
-                "stream": False,
-                "options": {"num_predict": settings["max_tokens"], "temperature": settings["temperature"]}
-            }, timeout=60)
-            r.raise_for_status()
-            result = r.json().get("message", {}).get("content", "")
+            result = self._call_ollama(
+                model=settings["model"],
+                messages=messages,
+                max_tokens=settings["max_tokens"],
+                temperature=settings["temperature"]
+            )
             
             # Log successful request
             if tracker:
