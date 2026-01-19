@@ -39,6 +39,7 @@ services:
       - "9099:9099"
     volumes:
       - ./pipelines:/app/pipelines
+      - ./integrations:/app/integrations
     environment:
       - PIPELINES_API_KEY=0p3n-w3bu1
       - OPENAI_API_KEY=0p3n-w3bu1
