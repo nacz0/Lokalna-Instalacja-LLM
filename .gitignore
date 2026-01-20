@@ -3,3 +3,28 @@ ollama/
 open-webui/
 pipelines/__pycache__/
 pipelines/smart_llama/
+
+# ============================================
+# Sekrety i konfiguracja (NIGDY nie commituj!)
+# ============================================
+.env
+.env.local
+.env.*.local
+integrations/.env
+integrations/spotify_token.json
+integrations/spotify_config.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

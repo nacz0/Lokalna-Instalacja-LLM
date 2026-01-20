@@ -1,0 +1,160 @@
+{
+  "activity_log": [
+    {
+      "timestamp": "2026-01-19T20:24:02.240436",
+      "pipeline": "Safe Mode",
+      "mode": "balanced",
+      "response_time_ms": 4.78,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-19T20:24:02.276240",
+      "pipeline": "Safe Mode",
+      "mode": "balanced",
+      "response_time_ms": 3.96,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-19T20:24:02.288624",
+      "pipeline": "Safe Mode",
+      "mode": "balanced",
+      "response_time_ms": 4.17,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-19T20:24:02.324385",
+      "pipeline": "Safe Mode",
+      "mode": "balanced",
+      "response_time_ms": 4.6,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-19T20:24:37.712247",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 20016.51,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:24:48.235337",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 10463.26,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:25:15.296933",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 2664.44,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:25:26.912511",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 11584.6,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:25:29.332285",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 13546.57,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:25:40.924436",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 11563.79,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:30:28.151780",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 23143.89,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:30:39.837234",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 11633.46,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:30:51.354417",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 11485.63,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:31:03.687067",
+      "pipeline": "Smart Mode",
+      "mode": "balanced",
+      "response_time_ms": 12302.73,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:33:31.020360",
+      "pipeline": "Safe Mode",
+      "mode": "balanced",
+      "response_time_ms": 33488.78,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:34:00.530606",
+      "pipeline": "Safe Mode",
+      "mode": "balanced",
+      "response_time_ms": 29470.83,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-19T20:34:16.050948",
+      "pipeline": "Safe Mode",
+      "mode": "balanced",
+      "response_time_ms": 15487.98,
+      "success": false,
+      "error": "('Connection aborted.', RemoteDisconnected('Remote"
+    }
+  ],
+  "stats": {
+    "Safe Mode": {
+      "total_calls": 7,
+      "success_count": 2,
+      "error_count": 5,
+      "total_response_time_ms": 78465.10410308838,
+      "modes_used": {
+        "balanced": 7
+      }
+    },
+    "Smart Mode": {
+      "total_calls": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "total_response_time_ms": 128404.88910675049,
+      "modes_used": {
+        "balanced": 10
+      }
+    }
+  }
+}

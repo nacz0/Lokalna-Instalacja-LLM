@@ -1,1 +1,2 @@
 psutil
+spotipy>=2.23.0
