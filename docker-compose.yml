@@ -44,6 +44,14 @@ services:
       - PIPELINES_API_KEY=0p3n-w3bu1
       - OPENAI_API_KEY=0p3n-w3bu1
       - PIPELINES_REQUIREMENTS_PATH=/app/pipelines/requirements.txt
+      # Klucze Spotify dla wszystkich uzytkownikow (uwaga: widoczne w compose)
+      - SPOTIFY_CLIENT_ID=0bd8f8cfded9489b9106a237eeaebada
+      - SPOTIFY_CLIENT_SECRET=0879f57c23e84bcbb2defc86f014db2e
+      - SPOTIFY_REDIRECT_URI=http://localhost:8888/callback
+      # Jesli masz refresh_token, dodaj go tutaj aby odswiezac access token bez logowania
+      # - SPOTIFY_REFRESH_TOKEN=your_refresh_token_here
+      # opcjonalnie, jesli chcesz dostarczyc wstepny access token
+      # - SPOTIFY_ACCESS_TOKEN=your_access_token_here
     restart: unless-stopped
 
   open-webui:
