@@ -6,11 +6,16 @@ Prosty test wywołania Ollama z automatycznym wyborem trybu.
 import sys
 import os
 
-# Dodaj katalog scripts do PATH (bo test jest teraz w tests/)
+# Dodaj katalog pipelines/utils do PATH
+pipelines_utils_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'pipelines', 'utils')
+sys.path.insert(0, pipelines_utils_path)
+
+# Dodaj katalog scripts do PATH
 scripts_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'scripts')
 sys.path.insert(0, scripts_path)
 
-from run_ollama_with_mode import get_mode, get_settings_for_mode, call_ollama_streaming
+from model_selector import ModelSelector
+from run_ollama_with_mode import call_ollama_streaming
 
 
 def main():
@@ -20,8 +25,8 @@ def main():
     print()
     
     # 1. Wykryj i wyświetl tryb
-    mode = get_mode()
-    settings = get_settings_for_mode(mode)
+    mode = ModelSelector.get_mode()
+    settings = ModelSelector.get_settings_for_mode(mode)
     
     print(f"\n⚙️  Ustawienia dla trybu '{mode}':")
     print(f"   • Model: {settings['model']}")

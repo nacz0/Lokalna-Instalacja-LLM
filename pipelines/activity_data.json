@@ -135,6 +135,14 @@
       "response_time_ms": 15487.98,
       "success": false,
       "error": "('Connection aborted.', RemoteDisconnected('Remote"
+    },
+    {
+      "timestamp": "2026-01-20T20:06:57.050857",
+      "pipeline": "Test Pipeline",
+      "mode": "light",
+      "response_time_ms": 123.45,
+      "success": true,
+      "error": null
     }
   ],
   "stats": {
@@ -154,6 +162,15 @@
       "total_response_time_ms": 128404.88910675049,
       "modes_used": {
         "balanced": 10
+      }
+    },
+    "Test Pipeline": {
+      "total_calls": 1,
+      "success_count": 1,
+      "error_count": 0,
+      "total_response_time_ms": 123.45,
+      "modes_used": {
+        "light": 1
       }
     }
   }
