@@ -10,11 +10,10 @@ from pydantic import BaseModel, Field
 import os
 import sys
 
-# Dodaj ścieżkę do utils
-sys.path.append(os.path.dirname(__file__))
-
-from utils.model_selector import ModelSelector
-from utils.activity_tracker import tracker
+# Import z utils - używamy sys.path bo pipelines nie jest pakietem Pythona
+sys.path.insert(0, os.path.dirname(__file__))
+from model_selector import ModelSelector
+from activity_tracker import tracker
 
 class Pipeline:
     class Valves(BaseModel):
@@ -98,22 +97,22 @@ class Pipeline:
                 
                 # Zapisz aktywność
                 elapsed = (time.time() - start_time) * 1000
-                tracker.log_activity(
+                tracker.log_request(
                     pipeline_name=self.name,
                     mode=mode,
-                    success=True,
-                    response_time_ms=elapsed
+                    response_time_ms=elapsed,
+                    success=True
                 )
             
             return generate()
             
         except Exception as e:
             elapsed = (time.time() - start_time) * 1000
-            tracker.log_activity(
+            tracker.log_request(
                 pipeline_name=self.name,
                 mode=mode,
-                success=False,
                 response_time_ms=elapsed,
+                success=False,
                 error=str(e)
             )
             return f"❌ Błąd: {str(e)}"
