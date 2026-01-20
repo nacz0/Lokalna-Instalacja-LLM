@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\pipelines",
+    "\\pipelines\\failed",
+    "\\pipelines\\smart_mode_selector",
+    "\\pipelines\\spotify_search",
+    "\\scripts"
+  ],
+  "SelectedNode": "\\pipelines\\failed\\smart_mode_selector.py",
+  "PreviewInSolutionExplorer": false
+}
