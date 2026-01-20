@@ -19,12 +19,38 @@ Projekt na przedmiot Inżynieria Oprogramowania
 
 ## Instrukcja uruchomienia
 
-### 1. Uruchom kontenery Docker
+### Szybki start (zalecane)
+
+Użyj skryptu startowego, który automatycznie wykryje RAM hosta i skonfiguruje środowisko:
+
+**Windows (PowerShell):**
 ```powershell
+.\start.ps1
+```
+
+**Linux/macOS:**
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+### Ręczne uruchomienie
+
+#### 1. Uruchom kontenery Docker z ustawieniem RAM
+
+**Windows:**
+```powershell
+$env:HOST_RAM_GB = [math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory / 1GB, 2)
 docker-compose up -d
 ```
 
-### 2. Pobierz modele AI
+**Linux/macOS:**
+```bash
+export HOST_RAM_GB=$(free -g | awk '/^Mem:/{print $2}')
+docker-compose up -d
+```
+
+#### 2. Pobierz modele AI
 ```powershell
 # Modele dla automatycznego wyboru trybu (na podstawie RAM):
 docker exec ollama ollama pull phi3:mini        # Light mode (< 8 GB RAM) - 2.2 GB

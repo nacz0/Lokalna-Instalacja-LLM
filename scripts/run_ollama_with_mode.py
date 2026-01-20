@@ -25,25 +25,59 @@ def get_mode():
 
 
 def get_settings_for_mode(mode):
-    """Zwraca ustawienia dla danego trybu."""
-    if mode == "light":
-        return {
-            "model": "phi3:mini",
-            "max_tokens": 256,
-            "temperature": 0.3
-        }
-    elif mode == "balanced":
-        return {
-            "model": "llama3:latest",
-            "max_tokens": 512,
-            "temperature": 0.5
-        }
-    elif mode == "advanced":
-        return {
-            "model": "llama3.1:latest",
-            "max_tokens": 1024,
-            "temperature": 0.7
-        }
+"""
+Zwraca ustawienia dla danego trybu.
+    
+Parametry:
+- model: nazwa modelu Ollama
+- max_tokens (num_predict): maksymalna liczba tokenów w odpowiedzi
+- temperature: kreatywność (0.0 = deterministyczne, 1.0 = bardzo kreatywne)
+- top_p: nucleus sampling - prawdopodobieństwo kumulatywne (0.0-1.0)
+- top_k: liczba tokenów do rozważenia przy każdym kroku
+- repeat_penalty: kara za powtarzanie tokenów (1.0 = brak kary)
+- num_ctx: rozmiar okna kontekstu (w tokenach)
+"""
+if mode == "light":
+    # gemma2:2b - mały model, wymaga bardziej restrykcyjnych parametrów
+    # Niska temperatura dla stabilności, mniejszy kontekst dla wydajności
+    return {
+        "model": "gemma2:2b",
+        "max_tokens": 256,
+        "temperature": 0.3,
+        "top_p": 0.85,
+        "top_k": 30,
+        "repeat_penalty": 1.15,
+        "num_ctx": 2048
+    }
+
+elif mode == "balanced":
+    # llama3:latest - zbalansowany model dla większości zastosowań
+    # Umiarkowana temperatura, standardowe parametry
+    return {
+        "model": "llama3:latest",
+        "max_tokens": 512,
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "top_k": 40,
+        "repeat_penalty": 1.1,
+        "num_ctx": 4096
+    }
+
+elif mode == "advanced":
+    # llama3.1:latest - zaawansowany model z większymi możliwościami
+    # Wyższa temperatura dla kreatywności, duży kontekst
+    return {
+        "model": "llama3.1:latest",
+        "max_tokens": 1024,
+        "temperature": 0.7,
+        "top_p": 0.92,
+        "top_k": 50,
+        "repeat_penalty": 1.05,
+        "num_ctx": 8192
+    }
+
+else:
+    raise ValueError(f"Nieznany tryb: {mode}. Dostępne: light, balanced, advanced")
 
 
 def call_ollama(prompt, settings, ollama_url="http://localhost:11434"):
@@ -63,14 +97,21 @@ def call_ollama(prompt, settings, ollama_url="http://localhost:11434"):
         "stream": False,
         "options": {
             "num_predict": settings["max_tokens"],
-            "temperature": settings["temperature"]
+            "temperature": settings["temperature"],
+            "top_p": settings["top_p"],
+            "top_k": settings["top_k"],
+            "repeat_penalty": settings["repeat_penalty"],
+            "num_ctx": settings["num_ctx"]
         }
     }
     
     print(f"📤 Wysyłam zapytanie do Ollama...")
     print(f"   Model: {settings['model']}")
     print(f"   Max tokens: {settings['max_tokens']}")
-    print(f"   Temperature: {settings['temperature']}\n")
+    print(f"   Temperature: {settings['temperature']}")
+    print(f"   Top-p: {settings['top_p']}, Top-k: {settings['top_k']}")
+    print(f"   Repeat penalty: {settings['repeat_penalty']}")
+    print(f"   Context size: {settings['num_ctx']} tokens\n")
     
     try:
         response = requests.post(url, json=payload, timeout=120)
@@ -103,14 +144,21 @@ def call_ollama_streaming(prompt, settings, ollama_url="http://localhost:11434")
         "stream": True,
         "options": {
             "num_predict": settings["max_tokens"],
-            "temperature": settings["temperature"]
+            "temperature": settings["temperature"],
+            "top_p": settings["top_p"],
+            "top_k": settings["top_k"],
+            "repeat_penalty": settings["repeat_penalty"],
+            "num_ctx": settings["num_ctx"]
         }
     }
     
     print(f"📤 Wysyłam zapytanie do Ollama (streaming)...")
     print(f"   Model: {settings['model']}")
     print(f"   Max tokens: {settings['max_tokens']}")
-    print(f"   Temperature: {settings['temperature']}\n")
+    print(f"   Temperature: {settings['temperature']}")
+    print(f"   Top-p: {settings['top_p']}, Top-k: {settings['top_k']}")
+    print(f"   Repeat penalty: {settings['repeat_penalty']}")
+    print(f"   Context size: {settings['num_ctx']} tokens\n")
     print("💬 Odpowiedź:\n")
     
     try:

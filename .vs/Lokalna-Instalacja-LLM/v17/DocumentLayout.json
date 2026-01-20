@@ -1,0 +1,204 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pipelines\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\smart_llama.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pipelines\\smart_llama.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\failed\\smart_llama.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pipelines\\failed\\smart_llama.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\run_ollama_with_mode.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\run_ollama_with_mode.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\llama_mode_selector.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\llama_mode_selector.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\failed\\smart_mode_selector.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pipelines\\failed\\smart_mode_selector.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\start.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:start.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\start.sh||{3B902123-F8A7-4915-9F01-361F908088D0}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:start.sh||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "requirements.txt",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\requirements.txt",
+              "RelativeDocumentMoniker": "pipelines\\requirements.txt",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\requirements.txt",
+              "RelativeToolTip": "pipelines\\requirements.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-01-20T17:52:08.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "run_ollama_with_mode.py",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\run_ollama_with_mode.py",
+              "RelativeDocumentMoniker": "scripts\\run_ollama_with_mode.py",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\run_ollama_with_mode.py",
+              "RelativeToolTip": "scripts\\run_ollama_with_mode.py",
+              "ViewState": "AgIAABYAAAAAAAAAAAAqwC0AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-01-20T17:25:33.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "smart_llama.py",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\failed\\smart_llama.py",
+              "RelativeDocumentMoniker": "pipelines\\failed\\smart_llama.py",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\failed\\smart_llama.py",
+              "RelativeToolTip": "pipelines\\failed\\smart_llama.py",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAqwF0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-01-20T17:25:18.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "smart_llama.py",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\smart_llama.py",
+              "RelativeDocumentMoniker": "pipelines\\smart_llama.py",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\smart_llama.py",
+              "RelativeToolTip": "pipelines\\smart_llama.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-01-20T05:53:37.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAC0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-01-20T05:53:37.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "llama_mode_selector.py",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\llama_mode_selector.py",
+              "RelativeDocumentMoniker": "scripts\\llama_mode_selector.py",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\llama_mode_selector.py",
+              "RelativeToolTip": "scripts\\llama_mode_selector.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-01-20T17:25:30.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\README.md",
+              "RelativeDocumentMoniker": "scripts\\README.md",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\scripts\\README.md",
+              "RelativeToolTip": "scripts\\README.md",
+              "ViewState": "AgIAACMAAAAAAAAAAAAlwCIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-01-20T05:54:17.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "smart_mode_selector.py",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\failed\\smart_mode_selector.py",
+              "RelativeDocumentMoniker": "pipelines\\failed\\smart_mode_selector.py",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\pipelines\\failed\\smart_mode_selector.py",
+              "RelativeToolTip": "pipelines\\failed\\smart_mode_selector.py",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-01-20T17:25:07.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAADsAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-01-20T05:54:35.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "start.sh",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\start.sh",
+              "RelativeDocumentMoniker": "start.sh",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\start.sh",
+              "RelativeToolTip": "start.sh",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-20T05:54:00.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "start.ps1",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\start.ps1",
+              "RelativeDocumentMoniker": "start.ps1",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Lokalna-Instalacja-LLM\\start.ps1",
+              "RelativeToolTip": "start.ps1",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAqwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-20T05:53:51.051Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
