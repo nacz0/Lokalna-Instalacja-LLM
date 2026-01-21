@@ -30,9 +30,22 @@ class Pipeline:
         self.valves = self.Valves()
         self._use_generate_endpoint = False  # Fallback flag
 
-    def _call_ollama(self, model: str, messages: list, max_tokens: int, temperature: float) -> str:
+    def _call_ollama(self, model: str, messages: list, settings: dict) -> str:
         """Call Ollama API with fallback to /api/generate if /api/chat returns 404."""
         base_url = self.valves.ollama_url.rsplit('/api/', 1)[0]
+        
+        # Budowanie opcji z wszystkich parametrów z model_selector
+        options = {
+            "num_predict": settings["max_tokens"],
+            "temperature": settings["temperature"],
+            "top_p": settings.get("top_p", 0.9),
+            "top_k": settings.get("top_k", 40),
+            "repeat_penalty": settings.get("repeat_penalty", 1.1),
+            "num_ctx": settings.get("num_ctx", 4096)
+        }
+        
+        # DEBUG: Wyświetl opcje w logach
+        print(f"[{self.name}] Wysyłam do Ollama z opcjami: {options}", flush=True)
         
         # Try /api/chat first (unless we already know it doesn't work)
         if not self._use_generate_endpoint:
@@ -42,7 +55,7 @@ class Pipeline:
                     "model": model,
                     "messages": messages,
                     "stream": False,
-                    "options": {"num_predict": max_tokens, "temperature": temperature}
+                    "options": options
                 }, timeout=60)
                 
                 if response.status_code == 404:
@@ -77,7 +90,7 @@ class Pipeline:
             "model": model,
             "prompt": prompt,
             "stream": False,
-            "options": {"num_predict": max_tokens, "temperature": temperature}
+            "options": options
         }, timeout=60)
         response.raise_for_status()
         return response.json().get("response", "")
@@ -106,8 +119,7 @@ class Pipeline:
             result = self._call_ollama(
                 model=settings["model"],
                 messages=messages,
-                max_tokens=settings["max_tokens"],
-                temperature=settings["temperature"]
+                settings=settings
             )
             
             # Log successful request
