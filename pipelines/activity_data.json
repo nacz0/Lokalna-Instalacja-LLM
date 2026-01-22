@@ -143,25 +143,171 @@
       "response_time_ms": 123.45,
       "success": true,
       "error": null
+    },
+    {
+      "timestamp": "2026-01-21T19:20:55.600598",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 129.52,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-21T19:20:57.924707",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 68.7,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-21T19:20:58.340888",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 73.7,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-21T19:20:58.721222",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 64.17,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-21T19:23:40.322666",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 133.77,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-21T19:23:40.791277",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 72.73,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-21T19:23:41.076500",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 73.95,
+      "success": false,
+      "error": "404 Client Error: Not Found for url: http://ollama"
+    },
+    {
+      "timestamp": "2026-01-21T19:26:21.902826",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 15744.61,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T19:26:27.812125",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 5403.18,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T19:26:40.819902",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 12136.53,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T19:26:42.035812",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 13861.37,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:09:11.918877",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 29693.39,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:09:37.471768",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 45855.36,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:09:53.387814",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 15446.11,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:10:20.431871",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 4655.03,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:10:27.661266",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 6800.54,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:10:27.787534",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 34079.68,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:10:38.836691",
+      "pipeline": "Smart Mode",
+      "mode": "light",
+      "response_time_ms": 10731.29,
+      "success": true,
+      "error": null
     }
   ],
   "stats": {
     "Safe Mode": {
-      "total_calls": 7,
-      "success_count": 2,
-      "error_count": 5,
-      "total_response_time_ms": 78465.10410308838,
+      "total_calls": 17,
+      "success_count": 8,
+      "error_count": 9,
+      "total_response_time_ms": 229873.6469745636,
       "modes_used": {
-        "balanced": 7
+        "balanced": 7,
+        "light": 10
       }
     },
     "Smart Mode": {
-      "total_calls": 10,
-      "success_count": 10,
-      "error_count": 0,
-      "total_response_time_ms": 128404.88910675049,
+      "total_calls": 18,
+      "success_count": 15,
+      "error_count": 3,
+      "total_response_time_ms": 172019.99688148499,
       "modes_used": {
-        "balanced": 10
+        "balanced": 10,
+        "light": 8
       }
     },
     "Test Pipeline": {

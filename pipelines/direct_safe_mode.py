@@ -131,6 +131,10 @@ class Pipeline:
 
             return formatted_response
         except Exception as e:
+            error_msg = str(e)
+            if "404" in error_msg:
+                error_msg = f"Model nie został znaleziony na serwerze Ollama. Upewnij się, że model jest pobrany. (Błąd: {error_msg})"
+            
             if tracker:
                 tracker.log_request(self.name, mode, (time.time() - start_time) * 1000, False, str(e)[:50])
-            return f"❌ Błąd: {str(e)}"
+            return f"❌ Błąd: {error_msg}"

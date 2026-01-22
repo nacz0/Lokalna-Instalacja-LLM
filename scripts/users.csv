@@ -1,0 +1,16 @@
+group,first_name,last_name,email
+power,Jan,Kowalski,jan.kowalski@firma.pl
+power,Anna,Nowak,anna.nowak@firma.pl
+power,Piotr,Wiśniewski,piotr.wisniewski@firma.pl
+power,Katarzyna,Wójcik,katarzyna.wojcik@firma.pl
+power,Michał,Kamiński,michal.kaminski@firma.pl
+normal,Ewa,Lewandowska,ewa.lewandowska@firma.pl
+normal,Tomasz,Zieliński,tomasz.zielinski@firma.pl
+normal,Agnieszka,Szymańska,agnieszka.szymanska@firma.pl
+normal,Marcin,Woźniak,marcin.wozniak@firma.pl
+normal,Joanna,Dąbrowska,joanna.dabrowska@firma.pl
+safe,Marek,Kozłowski,marek.kozlowski@firma.pl
+safe,Monika,Jankowska,monika.jankowska@firma.pl
+safe,Paweł,Mazur,pawel.mazur@firma.pl
+safe,Aleksandra,Krawczyk,aleksandra.krawczyk@firma.pl
+safe,Robert,Piotrowsk,robert.piotrowski@firma.pl

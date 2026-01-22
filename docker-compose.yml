@@ -29,7 +29,7 @@ services:
       - OLLAMA_HOST=ollama:11434
     # Skrypt: czekaj 5 sekund (żeby serwer wstał), a potem pobierz model
     entrypoint: /bin/sh
-    command: -c "sleep 5; ollama pull llama3"
+    command: -c "sleep 5; ollama pull llama3; ollama pull gemma2:2b; ollama pull llama3.1"
     restart: "no"
 
   pipelines:
@@ -70,9 +70,24 @@ services:
       # Customizacja UI przez zmienne środowiskowe
       - WEBUI_NAME=Asystent AI
       - DEFAULT_LOCALE=pl
+      - ENABLE_SIGNUP=true
     volumes:
       - ./open-webui:/app/backend/data
     depends_on:
       - ollama
       - pipelines
     restart: unless-stopped
+
+  # --- Auto-setup: automatyczna konfiguracja użytkowników i modeli ---
+  auto-setup:
+    image: python:3.11-slim
+    container_name: auto-setup
+    depends_on:
+      - open-webui
+    volumes:
+      - ./scripts:/scripts
+    working_dir: /scripts
+    # Instaluje requests i uruchamia skrypt (skrypt sam czeka na Open WebUI)
+    command: >
+      sh -c "pip install requests -q && python auto_setup.py"
+    restart: "no"
