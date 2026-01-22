@@ -287,17 +287,113 @@
       "response_time_ms": 10731.29,
       "success": true,
       "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:25:52.683643",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 31481.93,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:26:03.908004",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 10689.59,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:26:13.873211",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 0.16,
+      "success": false,
+      "error": "blocked_input"
+    },
+    {
+      "timestamp": "2026-01-22T10:26:14.253539",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 0.17,
+      "success": false,
+      "error": "blocked_input"
+    },
+    {
+      "timestamp": "2026-01-22T10:26:14.488235",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 0.24,
+      "success": false,
+      "error": "blocked_input"
+    },
+    {
+      "timestamp": "2026-01-22T10:26:18.580566",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 14331.11,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:26:42.957963",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 11114.45,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:26:53.099365",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 9694.98,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:27:05.965765",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 12553.13,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:28:53.247903",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 14145.57,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:29:03.999669",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 10294.36,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-22T10:29:17.870388",
+      "pipeline": "Safe Mode",
+      "mode": "light",
+      "response_time_ms": 13579.01,
+      "success": true,
+      "error": null
     }
   ],
   "stats": {
     "Safe Mode": {
-      "total_calls": 17,
-      "success_count": 8,
-      "error_count": 9,
-      "total_response_time_ms": 229873.6469745636,
+      "total_calls": 29,
+      "success_count": 17,
+      "error_count": 12,
+      "total_response_time_ms": 357758.34798812866,
       "modes_used": {
         "balanced": 7,
-        "light": 10
+        "light": 22
       }
     },
     "Smart Mode": {
