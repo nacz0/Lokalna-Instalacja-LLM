@@ -22,7 +22,7 @@ class Pipeline:
             description="Tryb modelu: 'auto' (automatyczny), 'light', 'balanced', 'advanced'"
         )
         ollama_base_url: str = Field(
-            default="http://ollama:11434",
+            default=os.getenv("OLLAMA_BASE_URL", "http://ollama:11434"),
             description="URL do Ollama API"
         )
     

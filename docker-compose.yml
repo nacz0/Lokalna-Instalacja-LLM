@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   ollama:
-    image: ollama/ollama:latest
+    image: ollama/ollama:0.32.5@sha256:4dea9fb511947e24a84237bb636b0203abcb2ff0d3fbc7b4ff865deb91362131
     container_name: ollama
     ports:
       - "11434:11434"
@@ -20,7 +18,7 @@ services:
 
   # --- NOWOŚĆ: Kontener inicjalizujący ---
   ollama-init:
-    image: ollama/ollama:latest
+    image: ollama/ollama:0.32.5@sha256:4dea9fb511947e24a84237bb636b0203abcb2ff0d3fbc7b4ff865deb91362131
     container_name: ollama-init
     depends_on:
       - ollama
@@ -33,7 +31,7 @@ services:
     restart: "no"
 
   pipelines:
-    image: ghcr.io/open-webui/pipelines:main
+    image: ghcr.io/open-webui/pipelines:main@sha256:b48e9bc338ce2be0acfbeff01810db72408a12f07739f9e3879c1f2b00952d6e
     container_name: pipelines
     ports:
       - "9099:9099"
@@ -41,13 +39,16 @@ services:
       - ./pipelines:/app/pipelines
       - ./integrations:/app/integrations
     environment:
-      - PIPELINES_API_KEY=0p3n-w3bu1
-      - OPENAI_API_KEY=0p3n-w3bu1
+      - PIPELINES_API_KEY=${PIPELINES_API_KEY:?Ustaw PIPELINES_API_KEY w pliku .env}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:?Ustaw OPENAI_API_KEY w pliku .env}
       - PIPELINES_REQUIREMENTS_PATH=/app/pipelines/requirements.txt
-      # Klucze Spotify dla wszystkich uzytkownikow (uwaga: widoczne w compose)
-      - SPOTIFY_CLIENT_ID=0bd8f8cfded9489b9106a237eeaebada
-      - SPOTIFY_CLIENT_SECRET=0879f57c23e84bcbb2defc86f014db2e
-      - SPOTIFY_REDIRECT_URI=http://localhost:8888/callback
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - MODEL_MODE=${MODEL_MODE:-auto}
+      - ACTIVITY_DATA_FILE=/app/pipelines/activity_data.json
+      # Dane dostępowe są pobierane z lokalnego pliku .env (nie commituj go).
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID:-}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET:-}
+      - SPOTIFY_REDIRECT_URI=${SPOTIFY_REDIRECT_URI:-http://localhost:8888/callback}
       # Jesli masz refresh_token, dodaj go tutaj aby odswiezac access token bez logowania
       # - SPOTIFY_REFRESH_TOKEN=your_refresh_token_here
       # opcjonalnie, jesli chcesz dostarczyc wstepny access token
@@ -59,14 +60,16 @@ services:
     build:
       context: ./customization
       dockerfile: Dockerfile
-    image: open-webui-custom:latest
+    image: local/open-webui-custom:k8s
     container_name: open-webui
     ports:
       - "3000:8080"
     environment:
       - OLLAMA_API_BASE=http://ollama:11434
+      - OLLAMA_BASE_URL=http://ollama:11434
       - OPENAI_API_BASE_URL=http://pipelines:9099
-      - OPENAI_API_KEY=0p3n-w3bu1
+      - OPENAI_API_KEY=${OPENAI_API_KEY:?Ustaw OPENAI_API_KEY w pliku .env}
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:?Ustaw WEBUI_SECRET_KEY w pliku .env}
       # Customizacja UI przez zmienne środowiskowe
       - WEBUI_NAME=Asystent AI
       - DEFAULT_LOCALE=pl

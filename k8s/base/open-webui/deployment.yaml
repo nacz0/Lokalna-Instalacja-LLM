@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-webui
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: open-webui
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: open-webui
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: open-webui
+          image: local/open-webui-custom:k8s
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: OLLAMA_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: llm-config
+                  key: OLLAMA_BASE_URL
+            - name: OLLAMA_API_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: llm-config
+                  key: OLLAMA_BASE_URL
+            - name: OPENAI_API_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: llm-config
+                  key: OPENAI_API_BASE_URL
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: llm-secrets
+                  key: OPENAI_API_KEY
+            - name: WEBUI_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: llm-secrets
+                  key: WEBUI_SECRET_KEY
+            - name: WEBUI_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: llm-config
+                  key: WEBUI_NAME
+            - name: DEFAULT_LOCALE
+              valueFrom:
+                configMapKeyRef:
+                  name: llm-config
+                  key: DEFAULT_LOCALE
+          volumeMounts:
+            - name: data
+              mountPath: /app/backend/data
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+            failureThreshold: 90
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 30
+            failureThreshold: 3
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: open-webui-data

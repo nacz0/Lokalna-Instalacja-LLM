@@ -10,7 +10,11 @@ from datetime import datetime
 from typing import List, Dict, Optional
 
 # Ścieżka do pliku z danymi (w katalogu pipelines)
-DATA_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "activity_data.json")
+DEFAULT_DATA_FILE = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "activity_data.json",
+)
+DATA_FILE = os.getenv("ACTIVITY_DATA_FILE", DEFAULT_DATA_FILE)
 
 class ActivityTracker:
     """Tracker aktywności pipeline'ów z persystencją do pliku JSON."""
@@ -45,6 +49,9 @@ class ActivityTracker:
     def _save_data(self, data: dict):
         """Zapisz dane do pliku JSON."""
         try:
+            data_directory = os.path.dirname(DATA_FILE)
+            if data_directory:
+                os.makedirs(data_directory, exist_ok=True)
             with open(DATA_FILE, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
         except Exception as e:

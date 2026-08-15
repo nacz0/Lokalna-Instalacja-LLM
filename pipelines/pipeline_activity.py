@@ -11,7 +11,8 @@ from typing import List, Union, Generator, Iterator, Dict
 from pydantic import BaseModel, Field
 
 # Ścieżka do pliku z danymi (ta sama co w innych pipeline'ach)
-DATA_FILE = "/app/pipelines/activity_data.json"
+DEFAULT_DATA_FILE = "/app/pipelines/activity_data.json"
+DATA_FILE = os.getenv("ACTIVITY_DATA_FILE", DEFAULT_DATA_FILE)
 
 class ActivityReader:
     """Odczytuje dane z pliku JSON."""
@@ -44,6 +45,9 @@ class ActivityReader:
     
     def clear_stats(self):
         try:
+            data_directory = os.path.dirname(DATA_FILE)
+            if data_directory:
+                os.makedirs(data_directory, exist_ok=True)
             with open(DATA_FILE, 'w', encoding='utf-8') as f:
                 json.dump({"activity_log": [], "stats": {}}, f)
         except Exception as e:

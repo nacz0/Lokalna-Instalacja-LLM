@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pipelines
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: pipelines
+  ports:
+    - name: http
+      port: 9099
+      targetPort: http

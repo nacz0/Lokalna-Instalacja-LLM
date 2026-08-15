@@ -1,6 +1,6 @@
 # Ignorowane pliki/katalogi zmienione przez program
-ollama/
-open-webui/
+/ollama/
+/open-webui/
 pipelines/__pycache__/
 pipelines/smart_llama/
 
@@ -10,6 +10,7 @@ pipelines/smart_llama/
 .env
 .env.local
 .env.*.local
+.env.k8s
 integrations/.env
 integrations/spotify_token.json
 integrations/spotify_config.json
@@ -28,3 +29,6 @@ venv/
 .idea/
 *.swp
 *.swo
+
+# Lokalne artefakty Kubernetes
+k8s-rendered.yaml

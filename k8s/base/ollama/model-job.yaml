@@ -1,0 +1,49 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ollama-model-loader
+spec:
+  backoffLimit: 5
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ollama-model-loader
+    spec:
+      automountServiceAccountToken: false
+      restartPolicy: OnFailure
+      containers:
+        - name: model-loader
+          image: ollama/ollama:0.32.5@sha256:4dea9fb511947e24a84237bb636b0203abcb2ff0d3fbc7b4ff865deb91362131
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: OLLAMA_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: llm-config
+                  key: OLLAMA_BASE_URL
+            - name: OLLAMA_MODELS
+              valueFrom:
+                configMapKeyRef:
+                  name: llm-config
+                  key: OLLAMA_MODELS
+          command:
+            - /bin/sh
+            - -ec
+          args:
+            - |
+              until ollama list >/dev/null 2>&1; do
+                echo "Oczekiwanie na Ollama..."
+                sleep 5
+              done
+              for model in ${OLLAMA_MODELS}; do
+                echo "Pobieranie modelu ${model}..."
+                ollama pull "${model}"
+              done
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

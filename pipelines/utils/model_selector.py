@@ -1,3 +1,5 @@
+import os
+
 import psutil
 from pydantic import BaseModel, Field
 
@@ -12,9 +14,13 @@ class ModelSettings(BaseModel):
 class ModelSelector:
     @staticmethod
     def get_mode(manual_mode: str = "auto"):
-        """Wykrywa tryb na podstawie dostępnej pamięci RAM."""
+        """Zwraca tryb jawnie skonfigurowany lub wykryty na podstawie RAM."""
         if manual_mode != "auto":
             return manual_mode
+
+        configured_mode = os.getenv("MODEL_MODE", "auto").lower()
+        if configured_mode in {"light", "balanced", "advanced"}:
+            return configured_mode
         
         ram_gb = psutil.virtual_memory().total / (1024**3)
         

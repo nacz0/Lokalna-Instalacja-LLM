@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: llm-config
+data:
+  OLLAMA_BASE_URL: http://ollama:11434
+  OPENAI_API_BASE_URL: http://pipelines:9099
+  PIPELINES_REQUIREMENTS_PATH: /app/pipelines/requirements.txt
+  ACTIVITY_DATA_FILE: /app/data/activity_data.json
+  MODEL_MODE: balanced
+  OLLAMA_MODELS: gemma2:2b llama3:latest llama3.1:latest
+  WEBUI_NAME: Asystent AI
+  DEFAULT_LOCALE: pl
+  SPOTIFY_MARKET: PL
+  SPOTIFY_SCOPE: user-read-private
+  SPOTIFY_USE_CLIENT_CREDENTIALS: "1"

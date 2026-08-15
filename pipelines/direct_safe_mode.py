@@ -23,7 +23,10 @@ from moderator import Moderator
 class Pipeline:
     class Valves(BaseModel):
         mode: str = Field(default="auto", description="Tryb: auto, light, balanced, advanced")
-        ollama_url: str = Field(default="http://ollama:11434/api/chat", description="Adres API Ollama")
+        ollama_url: str = Field(
+            default=f"{os.getenv('OLLAMA_BASE_URL', 'http://ollama:11434').rstrip('/')}/api/chat",
+            description="Adres API Ollama",
+        )
 
     def __init__(self):
         self.name = "Safe Mode"

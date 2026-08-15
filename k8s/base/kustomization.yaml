@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: local-llm
+
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - ollama/pvc.yaml
+  - ollama/deployment.yaml
+  - ollama/service.yaml
+  - ollama/model-job.yaml
+  - pipelines/pvc.yaml
+  - pipelines/deployment.yaml
+  - pipelines/service.yaml
+  - open-webui/pvc.yaml
+  - open-webui/deployment.yaml
+  - open-webui/service.yaml
+
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: local-llm

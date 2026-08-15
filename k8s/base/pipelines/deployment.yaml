@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipelines
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: pipelines
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: pipelines
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: pipelines
+          image: local/llm-pipelines:k8s
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 9099
+          envFrom:
+            - configMapRef:
+                name: llm-config
+          env:
+            - name: PIPELINES_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: llm-secrets
+                  key: PIPELINES_API_KEY
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: llm-secrets
+                  key: OPENAI_API_KEY
+            - name: SPOTIFY_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: llm-secrets
+                  key: SPOTIFY_CLIENT_ID
+                  optional: true
+            - name: SPOTIFY_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: llm-secrets
+                  key: SPOTIFY_CLIENT_SECRET
+                  optional: true
+            - name: SPOTIFY_REDIRECT_URI
+              valueFrom:
+                secretKeyRef:
+                  name: llm-secrets
+                  key: SPOTIFY_REDIRECT_URI
+                  optional: true
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          startupProbe:
+            tcpSocket:
+              port: http
+            periodSeconds: 5
+            failureThreshold: 60
+          readinessProbe:
+            tcpSocket:
+              port: http
+            periodSeconds: 10
+            failureThreshold: 6
+          livenessProbe:
+            tcpSocket:
+              port: http
+            periodSeconds: 30
+            failureThreshold: 3
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: pipelines-data

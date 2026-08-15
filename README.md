@@ -17,7 +17,18 @@ Projekt na przedmiot Inżynieria Oprogramowania
 - **`/tests`** - Testy UI, API oraz testy integracyjne
 - **`/data`** - Dane treningowe i testowe dla modelu
 
-## Instrukcja uruchomienia
+## Sposoby uruchomienia
+
+Projekt można uruchomić przez:
+
+- Docker Compose — najprostszy wariant developerski,
+- Kubernetes — wariant z orkiestracją, health checkami i trwałymi wolumenami.
+
+Szczegółowa instrukcja Kubernetes znajduje się w [docs/KUBERNETES.md](docs/KUBERNETES.md).
+
+## Uruchomienie przez Docker Compose
+
+Skopiuj `.env.example` jako `.env` i ustaw własne klucze. Nie commituj pliku `.env`.
 
 ### 1. Uruchom kontenery Docker
 ```powershell
@@ -36,6 +47,28 @@ docker exec ollama ollama pull llama3.1:latest  # Advanced mode (> 16 GB RAM) - 
 - **Open WebUI**: http://localhost:3000
 - **Ollama API**: http://localhost:11434
 - **Pipelines**: http://localhost:9099
+
+## Szybki start Kubernetes
+
+Wymagane są Docker, aktywny lokalny klaster Kubernetes i `kubectl`.
+
+```powershell
+Copy-Item .env.k8s.example .env.k8s
+# Uzupełnij wartości w .env.k8s
+
+.\scripts\k8s-up.ps1
+.\scripts\k8s-port-forward.ps1
+```
+
+Następnie otwórz http://localhost:3000.
+
+```powershell
+# Stan środowiska
+.\scripts\k8s-status.ps1
+
+# Zatrzymanie bez usuwania danych PVC
+.\scripts\k8s-down.ps1
+```
 
 ## Automatyczny wybór trybu
 

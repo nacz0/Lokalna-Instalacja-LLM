@@ -23,7 +23,10 @@ class Pipeline:
         mode: str = Field(default="auto", description="Tryb: auto, light, balanced, advanced")
         max_tokens: int = Field(default=512, description="Max tokens (nadpisywane przez mode)")
         temperature: float = Field(default=0.5, description="Temperature (nadpisywana przez mode)")
-        ollama_url: str = Field(default="http://ollama:11434/api/chat", description="Adres API Ollama")
+        ollama_url: str = Field(
+            default=f"{os.getenv('OLLAMA_BASE_URL', 'http://ollama:11434').rstrip('/')}/api/chat",
+            description="Adres API Ollama",
+        )
 
     def __init__(self):
         self.name = "Smart Mode"
