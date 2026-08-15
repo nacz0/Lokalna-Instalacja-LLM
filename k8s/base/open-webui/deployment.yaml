@@ -43,7 +43,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: llm-secrets
-                  key: OPENAI_API_KEY
+                  key: PIPELINES_API_KEY
             - name: WEBUI_SECRET_KEY
               valueFrom:
                 secretKeyRef:

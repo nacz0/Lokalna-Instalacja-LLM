@@ -38,7 +38,7 @@ Utwórz lokalny plik na podstawie szablonu:
 Copy-Item .env.k8s.example .env.k8s
 ```
 
-Ustaw długie, losowe wartości `PIPELINES_API_KEY`, `OPENAI_API_KEY` i `WEBUI_SECRET_KEY`. Dane Spotify są opcjonalne. Plik `.env.k8s` jest ignorowany przez Git.
+Ustaw długie, losowe wartości `PIPELINES_API_KEY` i `WEBUI_SECRET_KEY`. Ten sam `PIPELINES_API_KEY` jest przekazywany do Open WebUI jako klucz połączenia z Pipelines. Dane Spotify są opcjonalne. Plik `.env.k8s` jest ignorowany przez Git.
 
 Secret można zastosować osobno:
 
@@ -64,8 +64,12 @@ Docker Desktop:
 kind:
 
 ```powershell
-.\scripts\k8s-build.ps1 -ClusterType kind -KindClusterName kind
+kind create cluster --name local-llm `
+  --image kindest/node:v1.31.2@sha256:18fbefc20a7113353c7b75b5c869d7145a6abd6269154825872dc59c1329912e
+.\scripts\k8s-build.ps1 -ClusterType kind -KindClusterName local-llm
 ```
+
+Jeżeli klaster nazywa się `local-llm`, przekaż tę samą nazwę do skryptów przez `-KindClusterName local-llm`. Przypięty obraz Kubernetes v1.31.2 zachowuje kompatybilność ze starszym trybem cgroup v1 spotykanym w starszych instalacjach Docker Desktop.
 
 minikube:
 
@@ -89,7 +93,7 @@ Jeżeli obrazy są już zbudowane:
 .\scripts\k8s-up.ps1 -SkipBuild
 ```
 
-Job `ollama-model-loader` pobiera modele zdefiniowane w `OLLAMA_MODELS` w `k8s/base/configmap.yaml`. Pierwsze uruchomienie może potrwać kilkadziesiąt minut i wymaga około 15 GB wolnego miejsca.
+Job `ollama-model-loader` pobiera modele z efektywnej wartości `OLLAMA_MODELS`. Overlay `local` używa lekkiego `gemma2:2b` i potrzebuje około 2 GB na model. Konfiguracja bazowa oraz profil GPU zawierają wszystkie trzy modele i mogą wymagać około 15 GB wolnego miejsca.
 
 Postęp można obserwować poleceniem:
 

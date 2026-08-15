@@ -7,5 +7,5 @@ param(
 $ErrorActionPreference = "Stop"
 
 Write-Host "Open WebUI: http://localhost:$LocalPort"
-Write-Host "Naciśnij Ctrl+C, aby zakończyć przekierowanie portu."
+Write-Host "Nacisnij Ctrl+C, aby zakonczyc przekierowanie portu."
 kubectl port-forward service/open-webui "${LocalPort}:8080" -n $Namespace

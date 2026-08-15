@@ -5,4 +5,5 @@ resources:
   - ../../base
 
 patches:
+  - path: configmap-local.yaml
   - path: ollama-resources.yaml

@@ -13,10 +13,10 @@ $ResolvedEnvFile = if ([System.IO.Path]::IsPathRooted($EnvFile)) {
 }
 
 if (-not (Test-Path -LiteralPath $ResolvedEnvFile)) {
-    throw "Brak pliku $ResolvedEnvFile. Skopiuj .env.k8s.example jako .env.k8s i uzupełnij wartości."
+    throw "Brak pliku $ResolvedEnvFile. Skopiuj .env.k8s.example jako .env.k8s i uzupelnij wartosci."
 }
 
-$RequiredKeys = @("PIPELINES_API_KEY", "OPENAI_API_KEY", "WEBUI_SECRET_KEY")
+$RequiredKeys = @("PIPELINES_API_KEY", "WEBUI_SECRET_KEY")
 $ConfiguredValues = @{}
 Get-Content -LiteralPath $ResolvedEnvFile |
     Where-Object { $_ -match '^\s*[^#][^=]*=' } |
@@ -28,15 +28,15 @@ Get-Content -LiteralPath $ResolvedEnvFile |
 foreach ($Key in $RequiredKeys) {
     $Value = $ConfiguredValues[$Key]
     if ([string]::IsNullOrWhiteSpace($Value)) {
-        throw "W pliku sekretów brakuje wartości $Key."
+        throw "W pliku sekretow brakuje wartosci $Key."
     }
     if ($Value -in @("change-me", "replace-with-a-long-random-value")) {
-        throw "Zastąp przykładową wartość $Key własnym sekretem."
+        throw "Zastap przykladowa wartosc $Key wlasnym sekretem."
     }
 }
 
 kubectl apply -f (Join-Path $RepoRoot "k8s/base/namespace.yaml") | Out-Host
-if ($LASTEXITCODE -ne 0) { throw "Nie udało się utworzyć namespace $Namespace." }
+if ($LASTEXITCODE -ne 0) { throw "Nie udalo sie utworzyc namespace $Namespace." }
 
 kubectl create secret generic llm-secrets `
     --namespace $Namespace `
@@ -45,5 +45,5 @@ kubectl create secret generic llm-secrets `
     -o yaml |
     kubectl apply -f - | Out-Host
 
-if ($LASTEXITCODE -ne 0) { throw "Nie udało się utworzyć Kubernetes Secret." }
-Write-Host "Secret llm-secrets został zastosowany w namespace $Namespace." -ForegroundColor Green
+if ($LASTEXITCODE -ne 0) { throw "Nie udalo sie utworzyc Kubernetes Secret." }
+Write-Host "Secret llm-secrets zostal zastosowany w namespace $Namespace." -ForegroundColor Green

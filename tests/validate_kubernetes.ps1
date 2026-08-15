@@ -5,7 +5,7 @@ $Overlays = @("local", "gpu")
 foreach ($Overlay in $Overlays) {
     $ManifestLines = kubectl kustomize (Join-Path $RepoRoot "k8s/overlays/$Overlay")
     if ($LASTEXITCODE -ne 0) {
-        throw "Nie udało się wyrenderować overlay $Overlay."
+        throw "Nie udalo sie wyrenderowac overlay $Overlay."
     }
     $Manifest = $ManifestLines -join "`n"
 

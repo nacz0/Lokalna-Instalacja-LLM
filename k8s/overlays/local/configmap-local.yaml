@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: llm-config
+data:
+  MODEL_MODE: light
+  OLLAMA_MODELS: gemma2:2b

@@ -36,7 +36,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: llm-secrets
-                  key: OPENAI_API_KEY
+                  key: PIPELINES_API_KEY
             - name: SPOTIFY_CLIENT_ID
               valueFrom:
                 secretKeyRef:
